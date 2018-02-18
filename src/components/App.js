@@ -1,7 +1,14 @@
 import React, {Component} from 'react';
+
+import SearchBar from '../containers/SearchBar';
+
 export class App extends Component {
 	render() {
-		return <div>Hello World</div>;
+		return (
+			<div>
+				<SearchBar />
+			</div>
+		);
 	}
 }
 

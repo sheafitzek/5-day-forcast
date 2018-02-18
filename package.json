@@ -1,0 +1,22 @@
+{
+	"name": "5-day-forcast",
+	"version": "0.1.0",
+	"description": "A weather app that shows a 5 day forcast",
+	"author": "Shea Fitzek",
+	"license": "Unlicense",
+	"repository": "git@github.com:sheafitzek/5-day-forcast.git",
+	"main": "index.js",
+	"homepage": "https://sheafitzek.github.io/5-day-forcast/",
+	"private": true,
+	"dependencies": {
+		"react": "^16.2.0",
+		"react-dom": "^16.2.0",
+		"react-scripts": "1.1.1"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test --env=jsdom",
+		"eject": "react-scripts eject"
+	}
+}

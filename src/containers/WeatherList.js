@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 
 import {connect} from 'react-redux';
 
+import styled from 'styled-components';
+
 import Chart from '../components/Chart';
 
 export class WeatherList extends Component {
@@ -32,7 +34,7 @@ export class WeatherList extends Component {
 
 	render() {
 		return (
-			<table className="table table-hover">
+			<Table className="table table-hover">
 				<thead>
 					<tr>
 						<th>City</th>
@@ -42,7 +44,7 @@ export class WeatherList extends Component {
 					</tr>
 				</thead>
 				<tbody>{this.props.weather.map(this.renderWeather)}</tbody>
-			</table>
+			</Table>
 		);
 	}
 }
@@ -52,3 +54,31 @@ function mapStateToProps({weather}) {
 }
 
 export default connect(mapStateToProps)(WeatherList);
+
+const Table = styled.table`
+	thead {
+		tr {
+			td,
+			th {
+				vertical-align: middle;
+				text-align: center;
+			}
+
+			td {
+				
+			}
+
+			th {
+				
+			}
+		}
+	}
+
+	tbody {
+		tr {
+			td {
+				vertical-align: middle;
+			}
+		}
+	}
+`;

@@ -5,6 +5,8 @@ import {connect} from 'react-redux';
 
 import {fetchWeather} from '../actions/index';
 
+import styled from 'styled-components';
+
 export class SearchBar extends Component {
 	constructor(props) {
 		super(props);
@@ -29,7 +31,7 @@ export class SearchBar extends Component {
 
 	render() {
 		return (
-			<form className="input-group" onSubmit={this.onFormSubmit}>
+			<Form className="input-group" onSubmit={this.onFormSubmit}>
 				<input
 					type="text"
 					className="form-control"
@@ -42,7 +44,7 @@ export class SearchBar extends Component {
 						Submit
 					</button>
 				</span>
-			</form>
+			</Form>
 		);
 	}
 }
@@ -54,3 +56,7 @@ function mapDispatchToProps(dispatch) {
 
 // map bound action creator to props...now usable in container as this.props.<action creator>
 export default connect(null, mapDispatchToProps)(SearchBar);
+
+const Form = styled.form`
+	margin: 20px 40px;
+`;

@@ -5,20 +5,23 @@ import {connect} from 'react-redux';
 import styled from 'styled-components';
 
 import Chart from '../components/Chart';
+import GoogleMap from '../components/GoogleMap';
 
 export class WeatherList extends Component {
 	renderWeather = (cityData) => {
-		const name = cityData.city.name;
 		const id = cityData.city.id;
 		const temps = cityData.list.map((weather) => weather.main.temp);
 		const pressures = cityData.list.map((weather) => weather.main.pressure);
 		const humidities = cityData.list.map(
 			(weather) => weather.main.humidity
 		);
+		const {lat, lon} = cityData.city.coord;
 
 		return (
 			<tr key={id}>
-				<td>{name}</td>
+				<td>
+					<GoogleMap lat={lat} lon={lon} />
+				</td>
 				<td>
 					<Chart data={temps} units="&deg;F" color="red" />
 				</td>
@@ -63,14 +66,6 @@ const Table = styled.table`
 				vertical-align: middle;
 				text-align: center;
 			}
-
-			td {
-				
-			}
-
-			th {
-				
-			}
 		}
 	}
 
@@ -78,6 +73,11 @@ const Table = styled.table`
 		tr {
 			td {
 				vertical-align: middle;
+
+				.map {
+					width: 250px;
+					height: 200px;
+				}
 			}
 		}
 	}

@@ -18,36 +18,41 @@ export class WeatherList extends Component {
 		const {lat, lon} = cityData.city.coord;
 
 		return (
-			<tr key={id}>
-				<td>
-					<GoogleMap lat={lat} lon={lon} />
-				</td>
-				<td>
-					<Chart data={temps} units="&deg;F" color="red" />
-				</td>
-				<td>
-					<Chart data={pressures} units="hPa" color="blue" />
-				</td>
-				<td>
-					<Chart data={humidities} units="%" color="orange" />
-				</td>
-			</tr>
+			<div className="charts" key={id}>
+				<GoogleMap lat={lat} lon={lon} />
+				<Chart
+					className="chart"
+					data={temps}
+					units="&deg;F"
+					color="red"
+				/>
+				<Chart
+					className="chart"
+					data={pressures}
+					units="hPa"
+					color="blue"
+				/>
+				<Chart
+					className="chart"
+					data={humidities}
+					units="%"
+					color="orange"
+				/>
+			</div>
 		);
 	};
 
 	render() {
 		return (
-			<Table className="table table-hover">
-				<thead>
-					<tr>
-						<th>City</th>
-						<th>Temperature</th>
-						<th>Pressure</th>
-						<th>Humidity</th>
-					</tr>
-				</thead>
-				<tbody>{this.props.weather.map(this.renderWeather)}</tbody>
-			</Table>
+			<Div>
+				<div className="categories">
+					<div className="category city">City</div>
+					<div className="category temperature">Temperature</div>
+					<div className="category pressure">Pressure</div>
+					<div className="category humidity">Humidity</div>
+				</div>
+				<div>{this.props.weather.map(this.renderWeather)}</div>
+			</Div>
 		);
 	}
 }
@@ -58,27 +63,55 @@ function mapStateToProps({weather}) {
 
 export default connect(mapStateToProps)(WeatherList);
 
-const Table = styled.table`
-	thead {
-		tr {
-			td,
-			th {
-				vertical-align: middle;
-				text-align: center;
+const Div = styled.div`
+	display: grid;
+	grid-template-rows: 3rem 4fr;
+	grid-area: 2 / 1 / 3 / -1;
+
+	.categories,
+	.charts {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+
+		vertical-align: middle;
+		text-align: center;
+		border-bottom: 1px solid silver;
+
+		& > div {
+			vertical-align: middle;
+			text-align: center;
+
+			&.map {
+				margin: 0.5rem;
 			}
 		}
 	}
 
-	tbody {
-		tr {
-			td {
-				vertical-align: middle;
+	.categories {
+		background: rgba(255, 255, 255, 0.25);
+		border-top: 1px solid silver;
+		border-bottom: 1px solid silver;
 
-				.map {
-					width: 250px;
-					height: 200px;
-				}
-			}
+		.category {
+			height: 3rem;
+			line-height: 3rem;
+			text-align: center;
 		}
+	}
+
+	.city {
+		grid-area: 1 / 1 / -1 / 2;
+	}
+
+	.temperature {
+		grid-area: 1 / 2 / -1 / 3;
+	}
+
+	.pressure {
+		grid-area: 1 / 3 / -1 / 4;
+	}
+
+	.humidity {
+		grid-area: 1 / 4 / -1 / 5;
 	}
 `;

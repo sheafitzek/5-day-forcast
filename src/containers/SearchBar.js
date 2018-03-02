@@ -58,5 +58,7 @@ function mapDispatchToProps(dispatch) {
 export default connect(null, mapDispatchToProps)(SearchBar);
 
 const Form = styled.form`
+	grid-area: 1 / 1 / 2 / -1;
+
 	margin: 20px 40px;
 `;

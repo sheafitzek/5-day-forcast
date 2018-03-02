@@ -1,6 +1,6 @@
 {
-	"short_name": "5 Day Forcast",
-	"name": "A weather app that shows a 5 day forcast",
+	"short_name": "5 Day Forecast",
+	"name": "A weather app that shows a 5 day forecast",
 	"icons": [
 		{
 			"src": "favicon.ico",

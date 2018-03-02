@@ -1,15 +1,16 @@
 {
-  "name": "5-day-forcast",
+  "name": "5-day-forecast",
   "version": "0.1.0",
-  "description": "A weather app that shows a 5 day forcast",
+  "description": "A weather app that shows a 5 day average forecast",
   "author": "Shea Fitzek",
   "license": "Unlicense",
-  "repository": "git@github.com:sheafitzek/5-day-forcast.git",
+  "repository": "git@github.com:sheafitzek/5-day-forecast.git",
   "main": "index.js",
-  "homepage": "https://sheafitzek.github.io/5-day-forcast/",
+  "homepage": "https://sheafitzek.github.io/5-day-forecast/",
   "private": true,
   "dependencies": {
     "axios": "^0.17.1",
+    "gh-pages": "^1.1.0",
     "lodash": "^4.17.5",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -21,6 +22,7 @@
     "styled-components": "^3.1.6"
   },
   "scripts": {
+    "deploy": "npm run build && gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
